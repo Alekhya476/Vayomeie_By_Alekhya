@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story | Vayomeie — Made in Andhra Pradesh</title>
+<meta name="description" content="The story of Vayomeie — conscious luxury ethnic wear born from ancient craft traditions in Andhra Pradesh. Eco-friendly colours, breathable fabrics, artisan hands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  :root {
+    --cream: #F9F5EE;
+    --warm-white: #FDFAF5;
+    --deep-earth: #1A1410;
+    --earth: #2C2118;
+    --terracotta: #8B4A2F;
+    --terracotta-light: #C4785A;
+    --sage: #5C6B4E;
+    --gold: #B8974A;
+    --gold-light: #D4AF6A;
+    --border: rgba(44,33,24,0.12);
+    --border-light: rgba(44,33,24,0.07);
+    --text-muted: rgba(44,33,24,0.45);
+    --text-secondary: rgba(44,33,24,0.65);
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+ 
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--earth); overflow-x: hidden; cursor: none; }
+ 
+  .cursor { width: 8px; height: 8px; background: var(--deep-earth); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999; transform: translate(-50%, -50%); transition: transform 0.1s, width 0.3s var(--transition-slow), height 0.3s var(--transition-slow), background 0.3s; mix-blend-mode: multiply; }
+  .cursor-ring { width: 36px; height: 36px; border: 1px solid var(--earth); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99998; transform: translate(-50%, -50%); transition: transform 0.15s var(--transition), width 0.4s var(--transition-slow), height 0.4s var(--transition-slow), opacity 0.3s; opacity: 0.4; }
+  .cursor.hover { width: 14px; height: 14px; background: var(--terracotta); }
+  .cursor-ring.hover { width: 56px; height: 56px; opacity: 0.25; border-color: var(--terracotta); }
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+ 
+  #loader { position: fixed; inset: 0; background: var(--deep-earth); z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.8s var(--transition-slow), visibility 0.8s; }
+  #loader.hide { opacity: 0; visibility: hidden; }
+  .loader-logo { color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: 0.3em; overflow: hidden; }
+  .loader-logo span { display: inline-block; transform: translateY(100%); animation: loaderUp 1s var(--transition-slow) 0.2s forwards; }
+  .loader-line { width: 0; height: 1px; background: var(--gold); margin-top: 1.5rem; animation: loaderLine 1.2s var(--transition-slow) 0.5s forwards; }
+  @keyframes loaderUp { to { transform: translateY(0); } }
+  @keyframes loaderLine { to { width: 120px; } }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes slideUp { to { transform: translateY(0); } }
+ 
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 3rem; background: rgba(253,250,245,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo img { height: 32px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-secondary); text-decoration: none; position: relative; transition: color 0.3s; }
+  .nav-links a.active { color: var(--earth); }
+  .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s var(--transition-slow); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-icon { color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; background: none; border: none; cursor: none; transition: color 0.3s; display: flex; align-items: center; gap: 0.4rem; }
+  .nav-icon:hover { color: var(--gold); }
+  .bag-count { width: 18px; height: 18px; background: var(--terracotta); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: white; font-weight: 500; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 1px; background: var(--earth); transition: all 0.3s; }
+  .mobile-menu { position: fixed; inset: 0; z-index: 990; background: var(--deep-earth); display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.5s var(--transition-slow), visibility 0.5s; }
+  .mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .mobile-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+  .mobile-links a { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 300; color: rgba(253,250,245,0.7); text-decoration: none; transition: color 0.3s; }
+  .mobile-links a:hover { color: var(--gold-light); }
+  .mobile-close { position: absolute; top: 2rem; right: 2rem; background: none; border: none; cursor: none; font-size: 1.5rem; color: rgba(253,250,245,0.5); transition: color 0.3s, transform 0.3s; }
+  .mobile-close:hover { color: var(--gold); transform: rotate(90deg); }
+ 
+  /* STORY HERO - Full bleed video/image */
+  .story-hero {
+    height: 90svh; min-height: 600px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--deep-earth);
+  }
+  .story-hero-video {
+    position: absolute; inset: 0;
+  }
+  .story-hero-video video {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.45) saturate(0.8);
+  }
+  .story-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(26,20,16,0.2) 0%, rgba(26,20,16,0.65) 100%);
+  }
+  .story-hero-content {
+    position: relative; z-index: 5; text-align: center;
+    padding: 0 2rem;
+  }
+  .story-hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 400;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s var(--transition-slow) 1.6s forwards;
+  }
+  .story-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300; line-height: 0.95; color: var(--warm-white);
+    letter-spacing: -0.01em; overflow: hidden;
+  }
+  .story-hero-title .line { overflow: hidden; display: block; }
+  .story-hero-title .line span { display: block; transform: translateY(100%); animation: slideUp 1s var(--transition-slow) forwards; }
+  .story-hero-title .line:nth-child(1) span { animation-delay: 1.7s; }
+  .story-hero-title .line:nth-child(2) span { animation-delay: 1.85s; }
+  .story-hero-title em { font-style: italic; }
+  .story-hero-sub {
+    font-size: 0.85rem; font-weight: 300; letter-spacing: 0.04em;
+    color: rgba(253,250,245,0.65); margin-top: 2rem; max-width: 500px;
+    margin-left: auto; margin-right: auto; line-height: 1.8;
+    opacity: 0; animation: fadeUp 0.8s var(--transition-slow) 2.1s forwards;
+  }
+  .story-hero-scroll {
+    position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+    z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+    opacity: 0; animation: fadeUp 1s var(--transition-slow) 2.5s forwards;
+  }
+  .story-hero-scroll span { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(253,250,245,0.4); }
+  .story-hero-scroll::after { content: ''; width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollLine 2s ease-in-out 3s infinite; }
+  @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+ 
+  /* SECTIONS */
+  .section-label { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 400; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; color: var(--deep-earth); letter-spacing: -0.01em; }
+  .section-title em { font-style: italic; }
+ 
+  /* INTRO */
+  .intro-section {
+    padding: 8rem 3rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+    background: var(--warm-white);
+  }
+  .intro-text {}
+  .intro-large {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 300; line-height: 1.5;
+    color: var(--deep-earth); margin-top: 2rem;
+    letter-spacing: -0.005em;
+  }
+  .intro-large em { font-style: italic; color: var(--terracotta); }
+  .intro-body { font-size: 0.85rem; font-weight: 300; line-height: 1.9; color: var(--text-secondary); margin-top: 2rem; }
+  .intro-stat-row { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+  .intro-stat {}
+  .intro-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--terracotta); line-height: 1; }
+  .intro-stat-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+  .intro-image { position: relative; }
+  .intro-image-wrap { aspect-ratio: 4/5; overflow: hidden; background: #EDE8DF; position: relative; }
+  .intro-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s linear; }
+  .intro-image:hover .intro-image-wrap img { transform: scale(1.04); }
+  .intro-image-caption {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--cream); padding: 1.5rem;
+    max-width: 220px; border-left: 2px solid var(--gold);
+  }
+  .intro-image-caption-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--earth); line-height: 1.4; font-style: italic; }
+  .intro-image-caption-source { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.5rem; }
+ 
+  /* MANIFESTO */
+  .manifesto-section {
+    background: var(--deep-earth);
+    padding: 8rem 3rem;
+    position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .manifesto-bg {
+    position: absolute; inset: 0; z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22rem; font-weight: 300; line-height: 0.8;
+    color: rgba(184,151,74,0.04);
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none; letter-spacing: -0.05em;
+  }
+  .manifesto-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+  .manifesto-label { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; font-weight: 400; color: rgba(184,151,74,0.6); margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+  .manifesto-label::before, .manifesto-label::after { content: ''; width: 40px; height: 1px; background: var(--gold); opacity: 0.4; }
+  .manifesto-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.35;
+    color: var(--warm-white); font-style: italic;
+  }
+  .manifesto-quote em { font-style: normal; color: var(--gold-light); }
+  .manifesto-attribution { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,250,245,0.35); margin-top: 2.5rem; }
+ 
+  /* VALUES GRID */
+  .values-section { padding: 8rem 3rem; background: var(--cream); }
+  .values-header { max-width: 550px; margin-bottom: 5rem; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+  .value-card {
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    transition: border-color 0.4s, transform 0.4s var(--transition-slow);
+  }
+  .value-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--hover-bg, var(--deep-earth));
+    background-size: cover; background-position: center;
+    transition: height 0.5s var(--transition-slow); z-index: 0;
+  }
+  .value-card:hover { border-color: var(--deep-earth); transform: translateY(-4px); }
+  .value-card:hover::before { height: 100%; }
+  .value-card:hover .value-num,
+  .value-card:hover .value-name,
+  .value-card:hover .value-desc { color: rgba(253,250,245,0.85); position: relative; z-index: 1; }
+  .value-card:hover .value-line { background: var(--gold); }
+  .value-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(44,33,24,0.06); line-height: 1; margin-bottom: 1.5rem; transition: color 0.4s; position: relative; z-index: 1; }
+  .value-line { width: 30px; height: 1px; background: var(--gold); margin-bottom: 1.2rem; transition: background 0.4s; position: relative; z-index: 1; }
+  .value-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--deep-earth); margin-bottom: 1rem; transition: color 0.4s; position: relative; z-index: 1; }
+  .value-desc { font-size: 0.78rem; font-weight: 300; color: var(--text-secondary); line-height: 1.85; transition: color 0.4s; position: relative; z-index: 1; }
+ 
+  /* PROCESS TIMELINE */
+  .process-section { padding: 8rem 3rem; background: var(--warm-white); }
+  .process-header { margin-bottom: 5rem; }
+  .process-timeline { position: relative; }
+  .process-timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold), transparent); }
+  .process-step { display: grid; grid-template-columns: 60px 1fr; gap: 2rem; padding: 3rem 0; border-bottom: 1px solid var(--border-light); position: relative; }
+  .process-step:last-child { border-bottom: none; }
+  .process-dot {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--warm-white);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 0.2rem;
+    transition: border-color 0.4s, background 0.4s;
+    position: relative; z-index: 1;
+  }
+  .process-step:hover .process-dot { border-color: var(--gold); background: var(--gold); }
+  .process-dot-inner { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); transition: background 0.4s; }
+  .process-step:hover .process-dot-inner { background: var(--warm-white); }
+  .process-content {}
+  .process-step-num { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .process-step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--deep-earth); margin-bottom: 0.8rem; }
+  .process-step-desc { font-size: 0.82rem; font-weight: 300; color: var(--text-secondary); line-height: 1.85; max-width: 600px; }
+  .process-step-duration { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+  .process-step-duration::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+ 
+  /* ARTISANS */
+  .artisans-section { padding: 8rem 3rem; background: var(--cream); }
+  .artisans-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 4rem; align-items: start; }
+  .artisans-text {}
+  .artisans-body { font-size: 0.85rem; font-weight: 300; line-height: 1.9; color: var(--text-secondary); margin-top: 1.5rem; }
+  .artisans-body p + p { margin-top: 1.2rem; }
+  .artisans-cta { display: inline-flex; align-items: center; gap: 1rem; margin-top: 3rem; text-decoration: none; }
+  .artisans-cta-text { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; color: var(--earth); border-bottom: 1px solid var(--gold); padding-bottom: 2px; transition: color 0.3s; }
+  .artisans-cta-arrow { width: 40px; height: 1px; background: var(--gold); position: relative; transition: width 0.4s var(--transition-slow); }
+  .artisans-cta-arrow::after { content: ''; position: absolute; right: 0; top: -3px; width: 7px; height: 7px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); transform: rotate(45deg); }
+  .artisans-cta:hover .artisans-cta-arrow { width: 60px; }
+  .artisans-cta:hover .artisans-cta-text { color: var(--terracotta); }
+  .artisans-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; }
+  .artisans-img { overflow: hidden; background: #EDE8DF; }
+  .artisans-img:first-child { grid-row: span 2; }
+  .artisans-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; transition: transform 0.8s var(--transition-slow), filter 0.5s; filter: saturate(0.85); }
+  .artisans-img:not(:first-child) img { aspect-ratio: 4/3; }
+  .artisans-img:hover img { transform: scale(1.05); filter: saturate(1.05); }
+ 
+  /* CTA STRIP */
+  .cta-strip {
+    background: var(--terracotta);
+    padding: 5rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .cta-strip-text {}
+  .cta-strip-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--warm-white); line-height: 1.1; }
+  .cta-strip-title em { font-style: italic; }
+  .cta-strip-sub { font-size: 0.8rem; font-weight: 300; color: rgba(253,250,245,0.7); margin-top: 0.8rem; }
+  .cta-strip-btn {
+    display: inline-flex; align-items: center; gap: 1rem;
+    background: var(--warm-white); color: var(--terracotta);
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; padding: 1.2rem 2.5rem; text-decoration: none;
+    transition: background 0.3s, gap 0.4s var(--transition-slow);
+    white-space: nowrap;
+  }
+  .cta-strip-btn:hover { background: var(--deep-earth); color: var(--warm-white); gap: 1.5rem; }
+ 
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow); }
+  .reveal-right.visible { opacity: 1; transform: translateX(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+ 
+  footer { background: var(--cream); padding: 5rem 3rem 2.5rem; border-top: 1px solid var(--border); }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--border); }
+  .footer-brand img { height: 28px; margin-bottom: 1.5rem; }
+  .footer-brand-desc { font-size: 0.76rem; font-weight: 300; color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; max-width: 260px; }
+  .footer-socials { display: flex; align-items: center; gap: 1.2rem; }
+  .footer-social { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: border-color 0.3s, background 0.3s; font-size: 0.65rem; color: var(--text-muted); }
+  .footer-social:hover { border-color: var(--gold); background: var(--gold); color: white; }
+  .footer-col-title { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; color: var(--earth); margin-bottom: 1.5rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a { font-size: 0.78rem; font-weight: 300; color: var(--text-muted); text-decoration: none; transition: color 0.3s, padding-left 0.3s; display: inline-block; }
+  .footer-links a:hover { color: var(--terracotta); padding-left: 4px; }
+  .footer-contact-item { font-size: 0.76rem; font-weight: 300; color: var(--text-muted); line-height: 1.7; margin-bottom: 0.8rem; }
+  .footer-contact-item strong { font-weight: 400; color: var(--earth); display: block; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .footer-bottom { padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.68rem; font-weight: 300; color: var(--text-muted); letter-spacing: 0.04em; }
+ 
+  .whatsapp-btn { position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 900; width: 52px; height: 52px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 8px 30px rgba(37,211,102,0.3); transition: transform 0.3s var(--transition-slow), box-shadow 0.3s; cursor: none; }
+  .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,0.4); }
+  .whatsapp-btn svg { width: 26px; height: 26px; fill: white; }
+ 
+  @media (max-width: 1100px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; } .values-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .hamburger { display: flex; }
+    .intro-section { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+    .intro-image-caption { display: none; }
+    .artisans-layout { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+    .story-hero-title { font-size: clamp(2.5rem, 10vw, 5rem); }
+    .manifesto-section { padding: 5rem 1.5rem; }
+    .process-section, .artisans-section, .values-section { padding: 5rem 1.5rem; }
+    .cta-strip { flex-direction: column; align-items: flex-start; padding: 4rem 1.5rem; }
+    footer { padding: 4rem 1.5rem 2rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+ 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+ 
+<div id="loader">
+  <div class="loader-logo"><span>VAYOMEIE</span></div>
+  <div class="loader-line"></div>
+</div>
+ 
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <ul class="mobile-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+ 
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://vayomeie.com/assets/img/logo/vayomeie_small_logo_HD.png" alt="Vayomeie">
+  </a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="our-story.html" class="active">Our Story</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="" class="nav-icon">Login</a>
+    <a href="" class="nav-icon">Bag <span class="bag-count">0</span></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span></button>
+  </div>
+</nav>
+ 
+<!-- STORY HERO -->
+<section class="story-hero">
+  <div class="story-hero-video">
+    <video autoplay muted loop playsinline>
+      <source src="https://vayomeie.com/assets/videos/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="story-hero-overlay"></div>
+  <div class="story-hero-content">
+    <div class="story-hero-eyebrow">Founded in Andhra Pradesh</div>
+    <h1 class="story-hero-title">
+      <span class="line"><span>The <em>Story</em></span></span>
+      <span class="line"><span>of Vayomeie</span></span>
+    </h1>
+    <p class="story-hero-sub">Born from a deep respect for ancient craft, a refusal to rush, and a belief that clothing should outlast seasons.</p>
+  </div>
+  <div class="story-hero-scroll"><span>Scroll</span></div>
+</section>
+ 
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="intro-text">
+    <div class="section-label reveal">Our Beginning</div>
+    <p class="intro-large reveal reveal-delay-1">We started with a single question: <em>Why does fast fashion exist when slow clothing feels so much better?</em></p>
+    <div class="intro-body reveal reveal-delay-2">
+      <p>Vayomeie was born in Andhra Pradesh, a state that has woven and dyed cloth for centuries. We didn't need to invent a new process — we needed to honour the one that already existed.</p>
+      <p style="margin-top:1rem;">Our name is a combination of the Sanskrit words for Earth and Spirit — <em>Vayu</em> and <em>Meie</em>. We believe every garment should carry both: grounded in the earth, alive with intention.</p>
+    </div>
+    <div class="intro-stat-row reveal reveal-delay-3">
+      <div class="intro-stat">
+        <div class="intro-stat-num">30+</div>
+        <div class="intro-stat-label">Days per garment</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-num">6</div>
+        <div class="intro-stat-label">Natural dye sources</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-num">0</div>
+        <div class="intro-stat-label">Overproduction</div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-image reveal-right">
+    <div class="intro-image-wrap">
+      <img src="https://vayomeie.com/assets/img/hero/hero-5.jpg" alt="Vayomeie artisan at work" loading="lazy">
+    </div>
+    <div class="intro-image-caption">
+      <p class="intro-image-caption-text">"Every stitch is a conversation between the maker and the wearer."</p>
+      <p class="intro-image-caption-source">— Vayomeie Atelier</p>
+    </div>
+  </div>
+</section>
+ 
+<!-- MANIFESTO -->
+<section class="manifesto-section">
+  <div class="manifesto-bg">V</div>
+  <div class="manifesto-inner">
+    <div class="manifesto-label reveal">Our Manifesto</div>
+    <blockquote class="manifesto-quote reveal reveal-delay-1">
+      "We believe the most radical thing a fashion brand can do is <em>slow down</em> — to choose craft over convenience, longevity over novelty, and the wearer's relationship with their clothing over everything else."
+    </blockquote>
+    <p class="manifesto-attribution reveal reveal-delay-2">— Vayomeie, 2022</p>
+  </div>
+</section>
+ 
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-header">
+    <div class="section-label reveal">What We Stand For</div>
+    <h2 class="section-title reveal reveal-delay-1">Principles we <em>will not</em><br>compromise on</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal" style="--hover-bg: url('https://vayomeie.com/assets/img/hero/hero-4.jpg');">
+      <div class="value-num">01</div>
+      <div class="value-line"></div>
+      <h3 class="value-name">Zero Overproduction</h3>
+      <p class="value-desc">We make only what is ordered or what we can confidently sell. No waste, no surplus, no burning of unsold stock. Every piece we create will be worn.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1" style="--hover-bg: url('https://vayomeie.com/assets/img/artisans/block-print-process.jpg');">
+      <div class="value-num">02</div>
+      <div class="value-line"></div>
+      <h3 class="value-name">Eco-Friendly Colours</h3>
+      <p class="value-desc">Our dye stack comes entirely from plants and minerals — indigo, madder, pomegranate peel, myrobalan, iron, jaggery, and alum. Not a single synthetic dye in sight.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2" style="--hover-bg: url('https://vayomeie.com/assets/img/hero/craft-1.png');">
+      <div class="value-num">03</div>
+      <div class="value-line"></div>
+      <h3 class="value-name">Breathable Natural Fabrics</h3>
+      <p class="value-desc">Indian cotton, chosen for its breathability and its ability to carry natural dyes without chemical priming. The kind of fabric that improves with age.</p>
+    </div>
+    <div class="value-card reveal" style="--hover-bg: url('https://vayomeie.com/assets/img/blog/artisan-hands.jpg');">
+      <div class="value-num">04</div>
+      <div class="value-line"></div>
+      <h3 class="value-name">Fair Artisan Wages</h3>
+      <p class="value-desc">Our artisans are not contractors. They are partners. Paid above industry rate, with consistent work, and recognition for their craft. Their names matter to us.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-1" style="--hover-bg: url('https://vayomeie.com/assets/img/usp/usp-silhouette.png');">
+      <div class="value-num">05</div>
+      <div class="value-line"></div>
+      <h3 class="value-name">Size-Inclusive Always</h3>
+      <p class="value-desc">XS to 3XL on every design, without exception. The cost of inclusion is small. The message it sends is everything.</p>
+    </div>
+    <div class="value-card reveal reveal-delay-2" style="--hover-bg: url('https://vayomeie.com/assets/img/hero/hero-3.jpg');">
+      <div class="value-num">06</div>
+      <div class="value-line"></div>
+      <h3 class="value-name">Designed to Last</h3>
+      <p class="value-desc">Not a season. Not a year. Five years minimum — and better by then. We design for the wearer who counts their pieces, not their purchases.</p>
+    </div>
+  </div>
+</section>
+ 
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-header">
+    <div class="section-label reveal">The Making</div>
+    <h2 class="section-title reveal reveal-delay-1">Nine steps.<br><em>30 to 80 days.</em></h2>
+  </div>
+  <div class="process-timeline">
+    <div class="process-step reveal">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-content" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://vayomeie.com/assets/img/hero/hero-4.jpg') center/cover; padding: 2.5rem; border-radius: 12px;">
+        <div class="process-step-num" style="color: var(--gold-light);">Step 01</div>
+        <h3 class="process-step-title" style="color: var(--warm-white);">Sourcing the Cotton</h3>
+        <p class="process-step-desc" style="color: rgba(253,250,245,0.85);">We begin with Indian cotton — chosen by hand for its thread count, its breathability, and its capacity to hold natural colour without synthetic primers. The cloth arrives undyed, unmarked, full of potential.</p>
+        <div class="process-step-duration" style="color: rgba(253,250,245,0.6);">1–3 days</div>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-content" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://vayomeie.com/assets/img/artisans/block-print-process.jpg') center/cover; padding: 2.5rem; border-radius: 12px;">
+        <div class="process-step-num" style="color: var(--gold-light);">Step 02</div>
+        <h3 class="process-step-title" style="color: var(--warm-white);">The Myrobalan Soak</h3>
+        <p class="process-step-desc" style="color: rgba(253,250,245,0.85);">Before any colour touches the cloth, it soaks in myrobalan — an ancient Indian mordant made from the dried fruit of the Terminalia chebula tree. This tannin-rich soak prepares the fibres to receive dye permanently.</p>
+        <div class="process-step-duration" style="color: rgba(253,250,245,0.6);">2–4 days</div>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-content" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://vayomeie.com/assets/img/hero/craft-1.png') center/cover; padding: 2.5rem; border-radius: 12px;">
+        <div class="process-step-num" style="color: var(--gold-light);">Step 03</div>
+        <h3 class="process-step-title" style="color: var(--warm-white);">Block Printing by Hand</h3>
+        <p class="process-step-desc" style="color: rgba(253,250,245,0.85);">Our motifs are carved into teak blocks — some over 40 years old. Each impression is applied by hand, with care, pressure, and rhythm. No two prints are identical. That is the point.</p>
+        <div class="process-step-duration" style="color: rgba(253,250,245,0.6);">3–7 days</div>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-content" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://vayomeie.com/assets/img/usp/usp-breathable.png') center/cover; padding: 2.5rem; border-radius: 12px;">
+        <div class="process-step-num" style="color: var(--gold-light);">Step 04</div>
+        <h3 class="process-step-title" style="color: var(--warm-white);">Sun Drying on Grass</h3>
+        <p class="process-step-desc" style="color: rgba(253,250,245,0.85);">After printing, the cloth is laid flat on grass under direct sun. The combination of sunlight and earth moisture helps the dye cure slowly and deeply. We don't use drying machines.</p>
+        <div class="process-step-duration" style="color: rgba(253,250,245,0.6);">1–5 days (weather dependent)</div>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-content" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://vayomeie.com/assets/img/usp/usp-silhouette.png') center/cover; padding: 2.5rem; border-radius: 12px;">
+        <div class="process-step-num" style="color: var(--gold-light);">Step 05</div>
+        <h3 class="process-step-title" style="color: var(--warm-white);">Boiling in Copper Vessels</h3>
+        <p class="process-step-desc" style="color: rgba(253,250,245,0.85);">The dyed fabric is boiled in large copper vessels with alum to fix and brighten the colour. Copper reacts with certain dyes to deepen their hue — a chemical relationship that aluminium and steel cannot replicate.</p>
+        <div class="process-step-duration" style="color: rgba(253,250,245,0.6);">1–2 days</div>
+      </div>
+    </div>
+    <div class="process-step reveal">
+      <div class="process-dot"><div class="process-dot-inner"></div></div>
+      <div class="process-content" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://vayomeie.com/assets/img/hero/craft-4.png') center/cover; padding: 2.5rem; border-radius: 12px;">
+        <div class="process-step-num" style="color: var(--gold-light);">Step 06 – 09</div>
+        <h3 class="process-step-title" style="color: var(--warm-white);">Washing, Finishing, Cutting & Stitching</h3>
+        <p class="process-step-desc" style="color: rgba(253,250,245,0.85);">Four final steps — a thorough wash to remove excess dye, a hand-finishing pass to check every metre, precision cutting to our size templates, and careful stitching with double-seam reinforcement. The garment is then pressed, quality-checked, and ready to wear.</p>
+        <div class="process-step-duration" style="color: rgba(253,250,245,0.6);">10–30 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ARTISANS -->
+<section class="artisans-section">
+  <div class="artisans-layout">
+    <div class="artisans-text">
+      <div class="section-label reveal">The Hands</div>
+      <h2 class="section-title reveal reveal-delay-1">Our artisans carry<br><em>centuries of knowledge</em></h2>
+      <div class="artisans-body reveal reveal-delay-2">
+        <p>In the villages of Andhra Pradesh, the craft of natural dyeing and block printing has been passed down through families for generations. It is not taught in schools. It is inherited.</p>
+        <p>Our workshop is home to a core team of twelve artisans — printers, dyers, and finishers — each of whom has practised their craft for at least fifteen years. We don't train them; we learn from them.</p>
+        <p>When you wear a Vayomeie garment, you are wearing the knowledge of someone who spent a decade mastering the pressure behind a single block print.</p>
+      </div>
+      <a href="shop.html" class="artisans-cta reveal reveal-delay-3">
+        <span class="artisans-cta-text">Shop the Collection</span>
+        <span class="artisans-cta-arrow"></span>
+      </a>
+    </div>
+    <div class="artisans-visual reveal-right">
+      <div class="artisans-img">
+        <img src="https://vayomeie.com/assets/img/hero/hero-4.jpg" alt="Artisan at work" loading="lazy">
+      </div>
+      <div class="artisans-img">
+        <img src="https://vayomeie.com/assets/img/raw-materials/indigo.jpg" alt="Natural indigo dye" loading="lazy">
+      </div>
+      <div class="artisans-img">
+        <img src="https://vayomeie.com/assets/img/raw-materials/pomegranate.jpg" alt="Pomegranate dye" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-text reveal">
+    <h2 class="cta-strip-title">Ready to wear<br><em>the difference?</em></h2>
+    <p class="cta-strip-sub">Every piece you buy supports a tradition that deserves to continue.</p>
+  </div>
+  <a href="shop.html" class="cta-strip-btn reveal reveal-delay-1">Explore the Collection →</a>
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://vayomeie.com/assets/img/logo/vayomeie_small_logo_HD.png" alt="Vayomeie">
+      <p class="footer-brand-desc">Conscious luxury for the modern minimalist. Eco-friendly ethnic wear crafted in Andhra Pradesh.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/vayomeie" class="footer-social" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://wa.me/918523032783" class="footer-social" aria-label="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links"><li><a href="shop.html">Shop All</a></li><li><a href="our-story.html">Our Story</a></li><li><a href="journal.html">Journal</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div><h4 class="footer-col-title">Customer Care</h4><ul class="footer-links"><li><a href="https://vayomeie.com/size-guide">Size Guide</a></li><li><a href="https://vayomeie.com/fabric-guide">Fabric Guide</a></li><li><a href="https://vayomeie.com/shipping-policy">Shipping & Returns</a></li><li><a href="https://vayomeie.com/privacy-policy">Privacy Policy</a></li></ul></div>
+    <div><h4 class="footer-col-title">Get In Touch</h4><div class="footer-contact-item"><strong>Phone</strong>+91 8523032783</div><div class="footer-contact-item"><strong>Email</strong>info@vayomeie.com</div><div class="footer-contact-item"><strong>Address</strong>VAYOMEIE Main Branch, Anand Nagar Colony, Khairatabad, Hyderabad, Telangana, 500004.</div></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Vayomeie. All rights reserved. Made with intention.</p>
+    <p class="footer-copy" style="opacity:0.5;">Crafted in Andhra Pradesh</p>
+  </div>
+</footer>
+ 
+<a href="https://wa.me/918523032783?text=Hi%21+I%27d+like+to+know+more+about+Vayomeie." class="whatsapp-btn" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+</a>
+ 
+<script>
+window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hide'); }, 1800); });
+const cursor = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); } animRing();
+document.querySelectorAll('a, button, .value-card, .process-step').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vayomeie | Conscious Luxury for the Modern Minimalist</title>
+<meta name="description" content="Eco-friendly ethnic wear with breathable fabrics and modern silhouettes. Crafted in Andhra Pradesh. Shop sarees, kurtas, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  :root {
+    --cream: #F9F5EE;
+    --warm-white: #FDFAF5;
+    --deep-earth: #1A1410;
+    --earth: #2C2118;
+    --terracotta: #8B4A2F;
+    --terracotta-light: #C4785A;
+    --sage: #5C6B4E;
+    --gold: #B8974A;
+    --gold-light: #D4AF6A;
+    --border: rgba(44,33,24,0.12);
+    --border-light: rgba(44,33,24,0.07);
+    --text-muted: rgba(44,33,24,0.45);
+    --text-secondary: rgba(44,33,24,0.65);
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+ 
+  html { scroll-behavior: smooth; }
+ 
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--earth);
+    overflow-x: hidden;
+    cursor: none;
+  }
+ 
+  /* Custom Cursor */
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--deep-earth);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s var(--transition-slow), height 0.3s var(--transition-slow), background 0.3s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--earth);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s var(--transition), width 0.4s var(--transition-slow), height 0.4s var(--transition-slow), opacity 0.3s;
+    opacity: 0.4;
+  }
+  .cursor.hover { width: 14px; height: 14px; background: var(--terracotta); }
+  .cursor-ring.hover { width: 56px; height: 56px; opacity: 0.25; border-color: var(--terracotta); }
+ 
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+ 
+  /* ─── LOADER ─── */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--deep-earth);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.8s var(--transition-slow), visibility 0.8s;
+  }
+  #loader.hide { opacity: 0; visibility: hidden; }
+  .loader-logo {
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    overflow: hidden;
+  }
+  .loader-logo span { display: inline-block; transform: translateY(100%); animation: loaderUp 1s var(--transition-slow) 0.2s forwards; }
+  .loader-line {
+    width: 0; height: 1px;
+    background: var(--gold);
+    margin-top: 1.5rem;
+    animation: loaderLine 1.2s var(--transition-slow) 0.5s forwards;
+  }
+  @keyframes loaderUp { to { transform: translateY(0); } }
+  @keyframes loaderLine { to { width: 120px; } }
+ 
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.5rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.5s var(--transition), padding 0.4s, backdrop-filter 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(253,250,245,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1rem 3rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-logo img { height: 32px; filter: brightness(0) invert(1); transition: filter 0.4s; }
+  nav.scrolled .nav-logo img { filter: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(253,250,245,0.85);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--text-secondary); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.4s var(--transition-slow);
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links a:hover { color: var(--gold-light); }
+  nav.scrolled .nav-links a:hover { color: var(--gold); }
+  .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-icon {
+    color: rgba(253,250,245,0.8);
+    text-decoration: none; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: none; border: none; cursor: none;
+    transition: color 0.3s;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  nav.scrolled .nav-icon { color: var(--text-secondary); }
+  .nav-icon:hover { color: var(--gold-light); }
+  nav.scrolled .nav-icon:hover { color: var(--gold); }
+  .bag-count {
+    width: 18px; height: 18px; background: var(--terracotta);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: white; font-weight: 500;
+  }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 1px; background: rgba(253,250,245,0.85); transition: all 0.3s; }
+  nav.scrolled .hamburger span { background: var(--earth); }
+ 
+  /* ─── HERO ─── */
+  #hero {
+    height: 100svh; min-height: 600px;
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+    background: var(--deep-earth);
+  }
+  .hero-videos {
+    position: absolute; inset: 0;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+  .hero-video-panel {
+    position: relative; overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.8s var(--transition-slow);
+  }
+  .hero-video-panel video {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.08);
+    transition: transform 8s linear;
+    filter: brightness(0.55) saturate(0.85);
+  }
+  .hero-video-panel:hover video { transform: scale(1.0); }
+  .hero-video-panel::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(26,20,16,0.1) 0%, rgba(26,20,16,0.6) 100%);
+    z-index: 1;
+    transition: opacity 0.4s;
+  }
+  .hero-video-panel:hover::after { opacity: 0.7; }
+  .panel-link {
+    position: absolute; inset: 0; z-index: 2;
+    display: flex; align-items: flex-end; padding: 2rem;
+    text-decoration: none; color: transparent;
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .hero-video-panel:hover .panel-link { opacity: 1; color: rgba(253,250,245,0.8); }
+  .panel-cta {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 400; color: rgba(253,250,245,0.75);
+    border-bottom: 1px solid rgba(253,250,245,0.4);
+    padding-bottom: 2px;
+  }
+  .hero-dividers {
+    position: absolute; inset: 0; z-index: 3;
+    pointer-events: none;
+  }
+  .hero-dividers::before, .hero-dividers::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 1px;
+    background: rgba(253,250,245,0.12);
+  }
+  .hero-dividers::before { left: 33.33%; }
+  .hero-dividers::after { left: 66.66%; }
+ 
+  .hero-content {
+    position: relative; z-index: 5;
+    padding: 0 3rem 5rem;
+    width: 100%;
+    display: flex; flex-direction: column;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 400;
+    margin-bottom: 1.2rem;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s var(--transition-slow) 1.8s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-weight: 300; line-height: 0.92;
+    color: var(--warm-white);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+  }
+  .hero-title em { font-style: italic; font-weight: 300; }
+  .hero-title .line { overflow: hidden; display: block; }
+  .hero-title .line span {
+    display: block;
+    transform: translateY(100%);
+    animation: slideUp 1s var(--transition-slow) forwards;
+  }
+  .hero-title .line:nth-child(1) span { animation-delay: 1.9s; }
+  .hero-title .line:nth-child(2) span { animation-delay: 2.0s; }
+  .hero-sub {
+    font-size: 0.78rem; font-weight: 300; letter-spacing: 0.06em;
+    color: rgba(253,250,245,0.6); max-width: 360px; line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s var(--transition-slow) 2.2s forwards;
+    pointer-events: auto;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 1rem;
+    text-decoration: none; pointer-events: auto;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s var(--transition-slow) 2.4s forwards;
+  }
+  .hero-cta-text {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; color: var(--warm-white);
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .hero-cta:hover .hero-cta-text { color: var(--gold-light); border-color: var(--gold-light); }
+  .hero-cta-arrow {
+    width: 40px; height: 1px; background: var(--gold);
+    position: relative; transition: width 0.4s var(--transition-slow);
+  }
+  .hero-cta-arrow::after {
+    content: ''; position: absolute; right: 0; top: -3px;
+    width: 7px; height: 7px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold);
+    transform: rotate(45deg); transition: border-color 0.3s;
+  }
+  .hero-cta:hover .hero-cta-arrow { width: 60px; }
+  .hero-scroll {
+    position: absolute; bottom: 3rem; right: 3rem; z-index: 6;
+    writing-mode: vertical-rl; font-size: 0.62rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: rgba(253,250,245,0.4); font-weight: 300;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: fadeUp 1s var(--transition-slow) 2.8s forwards;
+  }
+  .hero-scroll::after {
+    content: ''; width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollLine 2s ease-in-out 3s infinite;
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes slideUp { to { transform: translateY(0); } }
+ 
+  /* ─── MARQUEE BAND ─── */
+  .marquee-band {
+    background: var(--deep-earth);
+    padding: 1rem 0;
+    overflow: hidden; display: flex;
+    border-top: 1px solid rgba(184,151,74,0.3);
+    border-bottom: 1px solid rgba(184,151,74,0.1);
+  }
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marqueeScroll 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-item {
+    display: inline-flex; align-items: center; gap: 1.2rem;
+    padding: 0 2rem;
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 400; color: rgba(184,151,74,0.7);
+  }
+  .marquee-dot {
+    width: 3px; height: 3px; background: var(--gold);
+    border-radius: 50%; flex-shrink: 0;
+  }
+  @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+ 
+  /* ─── SECTIONS GENERAL ─── */
+  section { padding: 7rem 3rem; }
+  .section-label {
+    font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+    font-weight: 400; color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--deep-earth); letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; }
+  .section-sub {
+    font-size: 0.82rem; font-weight: 300; letter-spacing: 0.03em;
+    color: var(--text-secondary); line-height: 1.8; margin-top: 0.8rem;
+  }
+ 
+  /* ─── FEATURED COLLECTION ─── */
+  #collection {
+    background: var(--cream);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .collection-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .view-all {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 400; color: var(--text-muted);
+    text-decoration: none; display: flex; align-items: center; gap: 0.8rem;
+    transition: color 0.3s, gap 0.4s var(--transition-slow);
+  }
+  .view-all::after {
+    content: '→'; font-size: 0.9rem; transition: transform 0.4s var(--transition-slow);
+  }
+  .view-all:hover { color: var(--terracotta); gap: 1.2rem; }
+  .view-all:hover::after { transform: translateX(4px); }
+ 
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+  }
+  .product-card {
+    position: relative; overflow: hidden;
+    background: var(--warm-white);
+    cursor: none;
+  }
+  .product-card:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+ 
+  .product-img-wrap {
+    position: relative; overflow: hidden;
+    background: #EDE8DF;
+  }
+  .product-card:nth-child(1) .product-img-wrap { aspect-ratio: 4/5; }
+  .product-img-wrap:not(:first-of-type) { aspect-ratio: 3/4; }
+  .product-card:not(:nth-child(1)) .product-img-wrap { aspect-ratio: 3/4; }
+ 
+  .product-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transform: scale(1.04);
+    transition: transform 0.8s var(--transition-slow), filter 0.5s;
+    filter: saturate(0.9);
+  }
+  .product-card:hover .product-img-wrap img { transform: scale(1.0); filter: saturate(1.05); }
+ 
+  .product-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,20,16,0.7) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.5s var(--transition);
+    display: flex; align-items: flex-end; padding: 1.5rem;
+  }
+  .product-card:hover .product-overlay { opacity: 1; }
+  .product-overlay-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--warm-white); color: var(--earth);
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 500; padding: 0.7rem 1.4rem;
+    text-decoration: none;
+    transform: translateY(10px);
+    transition: transform 0.4s var(--transition-slow), background 0.3s, color 0.3s;
+  }
+  .product-card:hover .product-overlay-btn { transform: translateY(0); }
+  .product-overlay-btn:hover { background: var(--gold); color: white; }
+ 
+  .product-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--terracotta); color: white;
+    font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 500; padding: 0.3rem 0.7rem;
+  }
+  .product-info { padding: 1.2rem 1rem; }
+  .product-name {
+    font-size: 0.75rem; font-weight: 400; letter-spacing: 0.05em;
+    color: var(--earth); line-height: 1.4;
+    text-decoration: none; display: block;
+    transition: color 0.3s;
+  }
+  .product-name:hover { color: var(--terracotta); }
+  .product-card:nth-child(1) .product-name { font-size: 0.88rem; }
+  .product-price { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.4rem; }
+  .price-sale {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 500; color: var(--earth);
+  }
+  .price-orig {
+    font-size: 0.72rem; font-weight: 300; color: var(--text-muted);
+    text-decoration: line-through;
+  }
+ 
+  /* More product cards row */
+  .products-row2 {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px; margin-top: 1.5px;
+  }
+ 
+  /* ─── USP ─── */
+  #usp { background: var(--deep-earth); color: var(--warm-white); }
+  .usp-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 4rem; margin-top: 4rem;
+  }
+  .usp-item { display: flex; flex-direction: column; }
+  .usp-icon {
+    width: 56px; height: 56px; margin-bottom: 2rem;
+    border: 1px solid rgba(184,151,74,0.4);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  .usp-item:hover .usp-icon { border-color: var(--gold); background: rgba(184,151,74,0.1); }
+  .usp-icon img { width: 26px; height: 26px; object-fit: contain; filter: brightness(0) invert(1) sepia(1) saturate(0.5) hue-rotate(10deg); opacity: 0.8; }
+  .usp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .usp-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; color: var(--warm-white);
+    margin-bottom: 1rem; line-height: 1.2;
+  }
+  .usp-desc { font-size: 0.78rem; font-weight: 300; color: rgba(253,250,245,0.5); line-height: 1.8; }
+  .usp-line { width: 0; height: 1px; background: var(--gold); margin-bottom: 2rem; transition: width 0.8s var(--transition-slow); }
+  .usp-item.visible .usp-line { width: 40px; }
+ 
+  /* ─── RAW MATERIALS ─── */
+  #raw { background: var(--warm-white); overflow: hidden; }
+  .raw-header { max-width: 600px; }
+  .raw-scroll-wrapper {
+    margin-top: 4rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .raw-track {
+    display: flex; gap: 1.5rem;
+    animation: rawScroll 28s linear infinite;
+    width: max-content;
+  }
+  .raw-track:hover { animation-play-state: paused; }
+  @keyframes rawScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .raw-card {
+    width: 280px; flex-shrink: 0;
+    position: relative; overflow: hidden;
+    cursor: none;
+    group: true;
+  }
+  .raw-img-wrap { 
+    aspect-ratio: 3/4; overflow: hidden; background: #EDE8DF;
+    position: relative;
+  }
+  .raw-img-wrap img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    transition: transform 0.8s var(--transition-slow), filter 0.5s;
+    filter: saturate(0.8) brightness(0.95);
+  }
+  .raw-card:hover .raw-img-wrap img { transform: scale(1.06); filter: saturate(1.1) brightness(1); }
+  .raw-info { padding: 1.2rem 0; }
+  .raw-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; color: var(--earth); margin-bottom: 0.3rem;
+  }
+  .raw-desc { font-size: 0.72rem; font-weight: 300; color: var(--text-muted); letter-spacing: 0.04em; }
+  .raw-fade-left, .raw-fade-right {
+    position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+  }
+  .raw-fade-left { left: 0; background: linear-gradient(to right, var(--warm-white), transparent); }
+  .raw-fade-right { right: 0; background: linear-gradient(to left, var(--warm-white), transparent); }
+ 
+  /* ─── OUR CRAFT ─── */
+  #craft { background: var(--cream); }
+  .craft-layout {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; margin-top: 4rem; align-items: start;
+  }
+  .craft-steps { display: flex; flex-direction: column; gap: 0; }
+  .craft-step {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: none;
+    transition: padding 0.4s var(--transition-slow);
+    position: relative;
+  }
+  .craft-step::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+    background: var(--gold); transition: width 0.4s var(--transition-slow);
+  }
+  .craft-step:hover { padding-left: 1.5rem; }
+  .craft-step:hover::before { width: 2px; }
+  .craft-step-label {
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 400; color: var(--gold); margin-bottom: 0.7rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .craft-step-label span { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 300; color: var(--text-muted); }
+  .craft-step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--deep-earth);
+    margin-bottom: 0.8rem;
+  }
+  .craft-step-desc { font-size: 0.78rem; font-weight: 300; color: var(--text-secondary); line-height: 1.8; }
+  .craft-visual {
+    position: sticky; top: 8rem;
+    height: 600px;
+    overflow: hidden;
+    background: #EDE8DF;
+  }
+  .craft-visual-inner {
+    width: 100%; height: 100%;
+    position: relative;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2.5rem;
+  }
+  .craft-bg-text {
+    position: absolute; top: 2rem; right: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem; font-weight: 300; line-height: 1;
+    color: rgba(26,20,16,0.04); white-space: nowrap;
+    writing-mode: vertical-rl; letter-spacing: 0.2em;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+  .craft-tags { display: flex; flex-direction: column; gap: 0.8rem; }
+  .craft-tag {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 400; color: var(--earth);
+    opacity: 0.6;
+  }
+  .craft-tag::before { content: '—'; color: var(--gold); }
+ 
+  /* ─── JOURNAL ─── */
+  #journal { background: var(--warm-white); }
+  .journal-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem; margin-top: 4rem;
+  }
+  .journal-card { cursor: none; }
+  .journal-img {
+    aspect-ratio: 4/3; overflow: hidden; background: #EDE8DF; margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .journal-card:first-child .journal-img { aspect-ratio: 3/2; }
+  .journal-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--transition-slow), filter 0.5s; filter: saturate(0.85); }
+  .journal-card:hover .journal-img img { transform: scale(1.05); filter: saturate(1); }
+  .journal-cat {
+    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 500; color: var(--terracotta); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .journal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: var(--deep-earth); line-height: 1.3;
+    margin-bottom: 0.6rem; text-decoration: none; display: block;
+    transition: color 0.3s;
+  }
+  .journal-card:first-child .journal-title { font-size: 1.7rem; }
+  .journal-title:hover { color: var(--terracotta); }
+  .journal-meta {
+    font-size: 0.68rem; font-weight: 300; color: var(--text-muted); letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .journal-meta span { color: var(--border); }
+ 
+  /* ─── NEWSLETTER ─── */
+  #newsletter {
+    background: var(--deep-earth);
+    position: relative; overflow: hidden;
+    padding: 6rem 3rem;
+  }
+  .newsletter-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  .newsletter-bg-text {
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16rem; font-weight: 300; line-height: 1;
+    color: rgba(184,151,74,0.04);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    white-space: nowrap; pointer-events: none;
+    letter-spacing: -0.04em;
+  }
+  .newsletter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 300; color: var(--warm-white);
+    line-height: 1.1;
+  }
+  .newsletter-title em { font-style: italic; color: var(--gold-light); }
+  .newsletter-desc {
+    font-size: 0.8rem; font-weight: 300; color: rgba(253,250,245,0.5);
+    line-height: 1.8; margin-top: 1rem;
+  }
+  .newsletter-form { display: flex; flex-direction: column; gap: 1rem; }
+  .newsletter-input-wrap {
+    display: flex;
+    border-bottom: 1px solid rgba(253,250,245,0.2);
+    padding-bottom: 0.8rem;
+    transition: border-color 0.3s;
+  }
+  .newsletter-input-wrap:focus-within { border-color: var(--gold); }
+  .newsletter-input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--warm-white); font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; font-weight: 300; letter-spacing: 0.04em;
+  }
+  .newsletter-input::placeholder { color: rgba(253,250,245,0.3); }
+  .newsletter-submit {
+    background: none; border: none; cursor: none;
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 500; color: var(--gold);
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: gap 0.4s var(--transition-slow), color 0.3s;
+  }
+  .newsletter-submit:hover { gap: 1rem; color: var(--gold-light); }
+  .newsletter-note { font-size: 0.62rem; color: rgba(253,250,245,0.25); letter-spacing: 0.05em; line-height: 1.7; }
+ 
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--cream);
+    padding: 5rem 3rem 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 4rem; padding-bottom: 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .footer-brand img { height: 28px; margin-bottom: 1.5rem; }
+  .footer-brand-desc {
+    font-size: 0.76rem; font-weight: 300; color: var(--text-muted);
+    line-height: 1.9; margin-bottom: 1.5rem; max-width: 260px;
+  }
+  .footer-socials { display: flex; align-items: center; gap: 1.2rem; }
+  .footer-social {
+    width: 34px; height: 34px; border: 1px solid var(--border);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: border-color 0.3s, background 0.3s;
+    font-size: 0.65rem; color: var(--text-muted);
+  }
+  .footer-social:hover { border-color: var(--gold); background: var(--gold); color: white; }
+  .footer-col-title {
+    font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 500; color: var(--earth); margin-bottom: 1.5rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a {
+    font-size: 0.78rem; font-weight: 300; color: var(--text-muted);
+    text-decoration: none; transition: color 0.3s, padding-left 0.3s;
+    display: inline-block;
+  }
+  .footer-links a:hover { color: var(--terracotta); padding-left: 4px; }
+  .footer-contact-item {
+    font-size: 0.76rem; font-weight: 300; color: var(--text-muted); line-height: 1.7;
+    margin-bottom: 0.8rem;
+  }
+  .footer-contact-item strong { font-weight: 400; color: var(--earth); display: block; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.2rem; }
+  .footer-bottom {
+    padding-top: 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.68rem; font-weight: 300; color: var(--text-muted); letter-spacing: 0.04em; }
+ 
+  /* ─── WHATSAPP ─── */
+  .whatsapp-btn {
+    position: fixed; bottom: 2.5rem; right: 2.5rem; z-index: 900;
+    width: 52px; height: 52px;
+    background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+    transition: transform 0.3s var(--transition-slow), box-shadow 0.3s;
+    cursor: none;
+  }
+  .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 12px 40px rgba(37,211,102,0.4); }
+  .whatsapp-btn svg { width: 26px; height: 26px; fill: white; }
+ 
+  /* ─── MOBILE NAV ─── */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 990;
+    background: var(--deep-earth);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.5s var(--transition-slow), visibility 0.5s;
+  }
+  .mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .mobile-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+  .mobile-links a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 300;
+    color: rgba(253,250,245,0.7); text-decoration: none;
+    transition: color 0.3s;
+    letter-spacing: 0.02em;
+  }
+  .mobile-links a:hover { color: var(--gold-light); }
+  .mobile-close {
+    position: absolute; top: 2rem; right: 2rem;
+    background: none; border: none; cursor: none;
+    font-size: 1.5rem; color: rgba(253,250,245,0.5);
+    transition: color 0.3s, transform 0.3s;
+  }
+  .mobile-close:hover { color: var(--gold); transform: rotate(90deg); }
+ 
+  /* ─── REVEAL ANIMATIONS ─── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s var(--transition-slow), transform 0.8s var(--transition-slow); }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+ 
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1100px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .product-card:nth-child(1) { grid-column: span 2; }
+    .products-row2 { grid-template-columns: repeat(3, 1fr); }
+    .journal-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.9rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 5rem 1.5rem; }
+    #newsletter { padding: 4rem 1.5rem; }
+    footer { padding: 4rem 1.5rem 2rem; }
+    .hero-content { padding: 0 1.5rem 4rem; }
+    .hero-scroll { right: 1.5rem; bottom: 2rem; }
+    .hero-videos { grid-template-columns: 1fr; }
+    .hero-video-panel:not(:first-child) { display: none; }
+    .hero-dividers { display: none; }
+    .usp-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .craft-layout { grid-template-columns: 1fr; }
+    .craft-visual { display: none; }
+    .newsletter-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .newsletter-bg-text { font-size: 6rem; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .product-card:nth-child(1) { grid-column: span 2; }
+    .products-row2 { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  @media (max-width: 600px) {
+    .hero-title { font-size: clamp(2.8rem, 12vw, 5rem); }
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card:nth-child(1) { grid-column: span 1; }
+    .products-row2 { grid-template-columns: 1fr; }
+    .journal-grid { grid-template-columns: 1fr; }
+    .collection-header { flex-direction: column; align-items: flex-start; }
+    .raw-card { width: 220px; }
+  }
+</style>
+</head>
+<body>
+ 
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+ 
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo"><span>VAYOMEIE</span></div>
+  <div class="loader-line"></div>
+</div>
+ 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <ul class="mobile-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+ 
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://vayomeie.com/assets/img/logo/vayomeie_small_logo_HD.png" alt="Vayomeie">
+  </a>
+  <ul class="nav-links">
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="" class="nav-icon">Login</a>
+    <a href="" class="nav-icon">
+      Bag <span class="bag-count">0</span>
+    </a>
+    <button class="hamburger" id="hamburger">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-videos">
+    <div class="hero-video-panel">
+      <video autoplay muted loop playsinline>
+        <source src="https://vayomeie.com/assets/videos/hero-3.mp4" type="video/mp4">
+      </video>
+
+    </div>
+    <div class="hero-video-panel">
+      <video autoplay muted loop playsinline>
+        <source src="https://vayomeie.com/assets/videos/hero.mp4" type="video/mp4">
+      </video>
+      
+    </div>
+    <div class="hero-video-panel">
+      <video autoplay muted loop playsinline>
+        <source src="https://vayomeie.com/assets/videos/hero-2.mp4" type="video/mp4">
+      </video>
+      
+    </div>
+  </div>
+  <div class="hero-dividers"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Conscious Luxury</div>
+    <h1 class="hero-title">
+      <span class="line"><span>For the <em>Modern</em></span></span>
+      <span class="line"><span>Minimalist</span></span>
+    </h1>
+    <p class="hero-sub">Eco-friendly dyes. Breathable fabrics. Artisan-crafted ethnic wear that moves with you.</p>
+    <a href="shop.html" class="hero-cta">
+      <span class="hero-cta-text">Shop Now</span>
+      <span class="hero-cta-arrow"></span>
+    </a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+ 
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span class="marquee-item">Eco-Friendly Dyes<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Breathable Fabrics<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Artisan-Driven<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Modern Ethnic<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Size-Inclusive<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Zero Overproduction<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Eco-Friendly Dyes<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Breathable Fabrics<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Artisan-Driven<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Modern Ethnic<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Size-Inclusive<span class="marquee-dot"></span></span>
+    <span class="marquee-item">Zero Overproduction<span class="marquee-dot"></span></span>
+  </div>
+</div>
+ 
+<!-- FEATURED COLLECTION -->
+<section id="collection">
+  <div class="collection-header">
+    <div>
+      <div class="section-label reveal">Featured Collection</div>
+      <h2 class="section-title reveal reveal-delay-1">Handpicked pieces<br><em>crafted with intention</em></h2>
+    </div>
+    <a href="shop.html" class="view-all reveal reveal-delay-2">View All Collections</a>
+  </div>
+ 
+  <!-- Row 1 -->
+  <div class="products-grid">
+    <!-- Large featured card -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a02bd594c27c-dsc09060.jpg"
+             onerror="this.src='https://vayomeie.com/assets/img/products/halter-neck-tiered-dress-cream-elephant-2/1.jpg'"
+             alt="A-Line Motif Printed Maxi Dress Black" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View Product →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/a-line-motif-printed-maxi-dress-black" class="product-name">A-Line Motif Printed Maxi Dress (Black)</a>
+        <div class="product-price"><span class="price-sale">₹2,499</span><span class="price-orig">₹3,299</span></div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/VAY-IND-004/03.jpg" alt="Halter Neck Tiered Dress Cream Elephant" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/halter-neck-tiered-dress-cream-elephant-2" class="product-name">Halter Neck Tiered Dress (Cream-Elephant)</a>
+        <div class="product-price"><span class="price-sale">₹2,499</span><span class="price-orig">₹3,299</span></div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a0c713fbb8b1-img9472-cmpr.jpg" alt="Halter Neck Tiered Dress Blue Elephant" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/halter-neck-tiered-dress-blue-elephant" class="product-name">Halter Neck Tiered Dress (Blue-Elephant)</a>
+        <div class="product-price"><span class="price-sale">₹2,499</span><span class="price-orig">₹3,299</span></div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a0c713fbb8b1-img9472-cmpr.jpg" alt="V-Neck Front-Slit Aline Dress Teal Blue" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/v-neck-front-slit-aline-dress-teal-blue-pomegranate" class="product-name">V-Neck Front-Slit Aline Dress (Teal Blue Pomegranate)</a>
+        <div class="product-price"><span class="price-sale">₹2,499</span><span class="price-orig">₹3,299</span></div>
+      </div>
+    </div>
+    <!-- Card 5 -->
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a02bb26811dd-dsc09118.jpg" alt="Halter Neck Tiered Dress Black Floral" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/halter-neck-tiered-dress-black-flowers-floral" class="product-name">Halter Neck Tiered Dress (Black Flowers Floral)</a>
+        <div class="product-price"><span class="price-sale">₹2,499</span><span class="price-orig">₹3,298</span></div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Row 2 -->
+  <div class="products-row2">
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a02beb518855-dsc09168.jpg" alt="Caphands Alia Cut Dress" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/caphands-alia-cut-dress-brown-maroon-floral" class="product-name">Caphands Alia-Cut Dress (Brown - Maroon Floral)</a>
+        <div class="product-price"><span class="price-sale">₹2,199</span><span class="price-orig">₹2,799</span></div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a02c27ea5b38-dsc09709.jpg" alt="Hem Tiered Aline Dress Cream Green Leaf" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/hem-tiered-aline-dress-cream-green-leaf" class="product-name">Hem-Tiered Aline Dress (Cream - Green Leaf)</a>
+        <div class="product-price"><span class="price-sale">₹2,199</span><span class="price-orig">₹2,798</span></div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a02c48ae00d5-dsc09317.jpg" alt="Aline Ruched Puff Sleeve Dress Red Cream" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/aline-ruched-puff-sleeve-dress-red-cream-floral" class="product-name">Aline Ruched Puff-Sleeve Dress (Red-Cream Floral)</a>
+        <div class="product-price"><span class="price-sale">₹2,199</span><span class="price-orig">₹2,798</span></div>
+      </div>
+    </div>
+    <div class="product-card reveal reveal-delay-3">
+      <div class="product-img-wrap">
+        <img src="https://vayomeie.com/assets/img/products/6a02cf7ce4162-dsc09369.jpg" alt="Aline Ruched Dress Cream Black" loading="lazy">
+        <div class="product-tag">Sale</div>
+        <div class="product-overlay">
+          <a href="shop.html" class="product-overlay-btn">View →</a>
+        </div>
+      </div>
+      <div class="product-info">
+        <a href="https://vayomeie.com/product/aline-ruched-puff-sleeve-dress-cream-black-floral" class="product-name">Aline Ruched Puff-Sleeve Dress (Cream-Black Floral)</a>
+        <div class="product-price"><span class="price-sale">₹2,199</span><span class="price-orig">₹2,799</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- USP -->
+<section id="usp">
+  <div class="section-label reveal" style="color: rgba(184,151,74,0.6);">Why Vayomeie</div>
+  <h2 class="section-title reveal reveal-delay-1" style="color:var(--warm-white);">Crafted with <em>purpose</em></h2>
+  <div class="usp-grid">
+    <div class="usp-item reveal reveal-delay-1">
+      <div class="usp-line"></div>
+      <div class="usp-icon">
+        <img src="https://vayomeie.com/assets/img/usp/usp-eco.png" alt="Eco">
+      </div>
+      <div class="usp-num">01</div>
+      <h3 class="usp-name">Eco-Friendly Colours</h3>
+      <p class="usp-desc">Our colours are kind to the earth — eco-friendly dyes that look vibrant, feel gentle, and leave no trace behind.</p>
+    </div>
+    <div class="usp-item reveal reveal-delay-2">
+      <div class="usp-line"></div>
+      <div class="usp-icon">
+        <img src="https://vayomeie.com/assets/img/usp/usp-breathable.png" alt="Breathable">
+      </div>
+      <div class="usp-num">02</div>
+      <h3 class="usp-name">Breathable Fabrics</h3>
+      <p class="usp-desc">Cotton that feels like a second skin — soft, light, and kind to yours. Suitable for Indian weathers.</p>
+    </div>
+    <div class="usp-item reveal reveal-delay-3">
+      <div class="usp-line"></div>
+      <div class="usp-icon">
+        <img src="https://vayomeie.com/assets/img/usp/usp-silhouette.png" alt="Silhouette">
+      </div>
+      <div class="usp-num">03</div>
+      <h3 class="usp-name">Modern Silhouettes</h3>
+      <p class="usp-desc">Daily wear with architectural lines and a modern fit — comfort without sacrificing edge. Heritage craft meets contemporary design.</p>
+    </div>
+  </div>
+</section>
+ 
+<!-- RAW MATERIALS -->
+<section id="raw">
+  <div class="raw-header">
+    <div class="section-label reveal">The Palette</div>
+    <h2 class="section-title reveal reveal-delay-1">Raw <em>Materials</em></h2>
+    <p class="section-sub reveal reveal-delay-2">Plants, peels, and minerals — the entire dye stack behind every Vayomeie garment.</p>
+  </div>
+  <div class="raw-scroll-wrapper">
+    <div class="raw-fade-left"></div>
+    <div class="raw-fade-right"></div>
+    <div class="raw-track">
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/indigo.jpg" alt="Indigo" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Indigo</h3><p class="raw-desc">A blue that deepens with every wash.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/madder.jpg" alt="Madder Root" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Madder Root</h3><p class="raw-desc">Brick reds, fixed by alum.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/myrobalan.jpg" alt="Myrobalan" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Myrobalan</h3><p class="raw-desc">The mordant that holds every colour in place.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/pomegranate.jpg" alt="Pomegranate Peel" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Pomegranate Peel</h3><p class="raw-desc">A soft, sun-warm yellow.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/iron-jaggery.jpg" alt="Iron and Jaggery" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Iron & Jaggery</h3><p class="raw-desc">Where our greys and blacks come from.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/alum.jpg" alt="Alum" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Alum</h3><p class="raw-desc">Mineral. Brightens reds. Locks in everything.</p></div>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/indigo.jpg" alt="Indigo" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Indigo</h3><p class="raw-desc">A blue that deepens with every wash.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/madder.jpg" alt="Madder Root" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Madder Root</h3><p class="raw-desc">Brick reds, fixed by alum.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/myrobalan.jpg" alt="Myrobalan" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Myrobalan</h3><p class="raw-desc">The mordant that holds every colour in place.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/pomegranate.jpg" alt="Pomegranate Peel" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Pomegranate Peel</h3><p class="raw-desc">A soft, sun-warm yellow.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/iron-jaggery.jpg" alt="Iron and Jaggery" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Iron & Jaggery</h3><p class="raw-desc">Where our greys and blacks come from.</p></div>
+      </div>
+      <div class="raw-card">
+        <div class="raw-img-wrap"><img src="https://vayomeie.com/assets/img/raw-materials/alum.jpg" alt="Alum" loading="lazy"></div>
+        <div class="raw-info"><h3 class="raw-name">Alum</h3><p class="raw-desc">Mineral. Brightens reds. Locks in everything.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- OUR CRAFT -->
+<section id="craft">
+  <div class="section-label reveal">Our Craft</div>
+  <h2 class="section-title reveal reveal-delay-1">Why each piece <em>feels different</em><br>in your hand</h2>
+  <div class="craft-layout">
+    <div class="craft-steps">
+      <div class="craft-step reveal">
+        <div class="craft-step-label">The Palette <span>01</span></div>
+        <h3 class="craft-step-title">Plants. Minerals. Nothing else.</h3>
+        <p class="craft-step-desc">Indigo leaves, madder root, pomegranate peel, myrobalan, iron-jaggery, and alum. A short, honest list — the same one Indian artisans have used for centuries.</p>
+      </div>
+      <div class="craft-step reveal reveal-delay-1">
+        <div class="craft-step-label">The Process <span>02</span></div>
+        <h3 class="craft-step-title">30 to 80 days from plant to garment.</h3>
+        <p class="craft-step-desc">Nine slow steps — soak, mordant, cure, print, dry, wash, boil in copper, brighten with alum, finish. We never compress them. The wait is the work.</p>
+      </div>
+      <div class="craft-step reveal reveal-delay-2">
+        <div class="craft-step-label">The Workshop <span>03</span></div>
+        <h3 class="craft-step-title">Made the slow way, on purpose.</h3>
+        <p class="craft-step-desc">Boiled in copper vessels, dried on grass under direct sun. Equipment that costs more, finishes that last longer, fabric that breathes.</p>
+      </div>
+      <div class="craft-step reveal reveal-delay-3">
+        <div class="craft-step-label">The Wearer <span>04</span></div>
+        <h3 class="craft-step-title">Office at 9. Workshop in your closet.</h3>
+        <p class="craft-step-desc">Built for working women who measure clothing in years, not seasons. Soft on day one, deeper after every wash, hand-down ready in five.</p>
+      </div>
+    </div>
+    <div class="craft-visual reveal-left">
+      <div style="position: absolute; inset: 0; z-index: 0;">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8) saturate(0.8);">
+          <source src="https://vayomeie.com/assets/videos/hero-5.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="craft-visual-inner" style="z-index: 1;">
+        <div class="craft-bg-text" style="color: rgba(255,255,255,0.15);">Craft</div>
+        <div class="craft-tags">
+          <span class="craft-tag" style="color: var(--warm-white);">Preserving Ancient Craft Traditions</span>
+          <span class="craft-tag" style="color: var(--warm-white);">100% Eco-Friendly Colours</span>
+          <span class="craft-tag" style="color: var(--warm-white);">Zero Overproduction</span>
+          <span class="craft-tag" style="color: var(--warm-white);">Following Nature's Way</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- JOURNAL -->
+<section id="journal">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;margin-bottom:4rem;">
+    <div>
+      <div class="section-label reveal">From the Journal</div>
+      <h2 class="section-title reveal reveal-delay-1">Stories of craft,<br><em>sustainability & style</em></h2>
+    </div>
+    <a href="journal.html" class="view-all reveal reveal-delay-2">Read All Articles</a>
+  </div>
+  <div class="journal-grid">
+    <div class="journal-card reveal">
+      <div class="journal-img">
+        <img src="https://vayomeie.com/assets/img/raw-materials/iron-jaggery.jpg"
+             onerror="this.style.display='none'"
+             alt="Eco-Friendly Colours" loading="lazy">
+      </div>
+      <div class="journal-cat">Fabric Education</div>
+      <a href="https://vayomeie.com/journal/eco-friendly-colours-dyeing" class="journal-title">Eco-Friendly Colours: How We Dye Without Harming the Earth</a>
+      <div class="journal-meta">05 Apr 2026 <span>·</span> 1 min read</div>
+    </div>
+    <div class="journal-card reveal reveal-delay-1">
+      <div class="journal-img">
+        <img src="https://vayomeie.com/assets/img/raw-materials/myrobalan.jpg"
+             onerror="this.style.display='none'"
+             alt="Saree Gift Guide" loading="lazy">
+      </div>
+      <div class="journal-cat">Styling Guides</div>
+      <a href="https://vayomeie.com/journal/perfect-saree-gift-guide" class="journal-title">The Perfect Saree Gift: A Guide to Gifting Handloom</a>
+      <div class="journal-meta">05 Apr 2026 <span>·</span> 1 min read</div>
+    </div>
+    <div class="journal-card reveal reveal-delay-2">
+      <div class="journal-img">
+        <img src="https://vayomeie.com/assets/img/raw-materials/indigo.jpg"
+             onerror="this.style.display='none'"
+             alt="Conscious Wardrobe" loading="lazy">
+      </div>
+      <div class="journal-cat">Styling Guides</div>
+      <a href="https://vayomeie.com/journal/build-conscious-wardrobe-5-steps" class="journal-title">How to Build a Conscious Wardrobe: 5 Simple Steps</a>
+      <div class="journal-meta">05 Apr 2026 <span>·</span> 2 min read</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-bg-text">Vayomeie</div>
+  <div class="newsletter-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:rgba(184,151,74,0.6);">Join the Movement</div>
+      <h2 class="newsletter-title">Be the first to<br><em>know</em></h2>
+      <p class="newsletter-desc">New drops, artisan stories, and exclusive pre-booking access — delivered to your inbox.</p>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <div class="newsletter-input-wrap">
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
+          <button type="submit" class="newsletter-submit">Subscribe →</button>
+        </div>
+        <p class="newsletter-note">We respect your privacy. Unsubscribe at any time.</p>
+      </form>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://vayomeie.com/assets/img/logo/vayomeie_small_logo_HD.png" alt="Vayomeie">
+      <p class="footer-brand-desc">Conscious luxury for the modern minimalist. Eco-friendly ethnic wear crafted in Andhra Pradesh with eco-friendly colours and breathable fabrics.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/vayomeie" class="footer-social" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://wa.me/918523032783" class="footer-social" aria-label="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop All</a></li>
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Customer Care</h4>
+      <ul class="footer-links">
+        <li><a href="https://vayomeie.com/size-guide">Size Guide</a></li>
+        <li><a href="https://vayomeie.com/fabric-guide">Fabric Guide</a></li>
+        <li><a href="https://vayomeie.com/shipping-policy">Shipping & Returns</a></li>
+        <li><a href="https://vayomeie.com/privacy-policy">Privacy Policy</a></li>
+        <li><a href="https://vayomeie.com/terms">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Get In Touch</h4>
+      <div class="footer-contact-item">
+        <strong>Phone</strong>
+        +91 8523032783
+      </div>
+      <div class="footer-contact-item">
+        <strong>Email</strong>
+        info@vayomeie.com
+      </div>
+      <div class="footer-contact-item">
+        <strong>Address</strong>
+        VAYOMEIE Main Branch, Anand Nagar Colony, Khairatabad, Hyderabad, Telangana, 500004.
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Vayomeie. All rights reserved. Made with intention.</p>
+    <p class="footer-copy" style="color:var(--text-muted);opacity:0.5;">Crafted in Andhra Pradesh</p>
+  </div>
+  <p>Designed by Alekhya</p>
+</footer>
+ 
+<!-- WHATSAPP -->
+<a href="https://wa.me/918523032783?text=Hi%21+I%27d+like+to+know+more+about+Vayomeie." class="whatsapp-btn" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/>
+  </svg>
+</a>
+ 
+<script>
+// ─── LOADER ───
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hide');
+  }, 2200);
+});
+ 
+// ─── CURSOR ───
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+ 
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx + 'px';
+  cursor.style.top = my + 'px';
+});
+ 
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+ 
+document.querySelectorAll('a, button, .product-card, .journal-card, .craft-step, .raw-card').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+ 
+// ─── NAV SCROLL ───
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+}, { passive: true });
+ 
+// ─── MOBILE MENU ───
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+document.querySelectorAll('.mobile-links a').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+});
+ 
+// ─── SCROLL REVEAL ───
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.closest('.usp-item')) {
+        entry.target.closest('.usp-item').classList.add('visible');
+      }
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+ 
+document.querySelectorAll('.reveal, .reveal-left, .usp-item').forEach(el => revealObserver.observe(el));
+ 
+// ─── HERO VIDEO PARALLAX ───
+window.addEventListener('scroll', () => {
+  const hero = document.getElementById('hero');
+  const scroll = window.scrollY;
+  if (scroll < hero.offsetHeight) {
+    document.querySelectorAll('.hero-video-panel video').forEach(v => {
+      v.style.transform = `scale(1.08) translateY(${scroll * 0.15}px)`;
+    });
+  }
+}, { passive: true });
+ 
+// ─── NEWSLETTER ───
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.newsletter-submit');
+  btn.textContent = 'Subscribed ✓';
+  btn.style.color = '#5C6B4E';
+  e.target.querySelector('input').value = '';
+  setTimeout(() => { btn.textContent = 'Subscribe →'; btn.style.color = ''; }, 3000);
+}
+ 
+// ─── PRODUCT IMAGE FALLBACK ───
+// Try product image paths
+document.querySelectorAll('.product-img-wrap img').forEach(img => {
+  img.addEventListener('error', function() {
+    this.style.opacity = '0.3';
+    this.parentElement.style.background = '#DDD5C8';
+  });
+});
+</script>
+</body>
+</html>

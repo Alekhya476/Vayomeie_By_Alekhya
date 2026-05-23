@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Vayomeie — Conscious Luxury Ethnic Wear</title>
+<meta name="description" content="Get in touch with Vayomeie. Reach out for queries, collaborations, or simply to say hello. We're here for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  :root {
+    --cream: #F9F5EE;
+    --warm-white: #FDFAF5;
+    --deep-earth: #1A1410;
+    --earth: #2C2118;
+    --terracotta: #8B4A2F;
+    --terracotta-light: #C4785A;
+    --sage: #5C6B4E;
+    --gold: #B8974A;
+    --gold-light: #D4AF6A;
+    --border: rgba(44,33,24,0.12);
+    --border-light: rgba(44,33,24,0.07);
+    --text-muted: rgba(44,33,24,0.45);
+    --text-secondary: rgba(44,33,24,0.65);
+    --transition: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+ 
+  html { scroll-behavior: smooth; }
+ 
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--earth);
+    overflow-x: hidden;
+    cursor: none;
+  }
+ 
+  /* Custom Cursor */
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--deep-earth);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s var(--transition-slow), height 0.3s var(--transition-slow), background 0.3s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--earth);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s var(--transition), width 0.4s var(--transition-slow), height 0.4s var(--transition-slow), opacity 0.3s;
+    opacity: 0.4;
+  }
+  .cursor.hover { width: 14px; height: 14px; background: var(--terracotta); }
+  .cursor-ring.hover { width: 56px; height: 56px; opacity: 0.25; border-color: var(--terracotta); }
+ 
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+ 
+  /* LOADER */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--deep-earth);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    transition: opacity 0.8s var(--transition-slow), visibility 0.8s;
+  }
+  #loader.hide { opacity: 0; visibility: hidden; }
+  .loader-logo {
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300; letter-spacing: 0.3em; overflow: hidden;
+  }
+  .loader-logo span { display: inline-block; transform: translateY(100%); animation: loaderUp 1s var(--transition-slow) 0.2s forwards; }
+  .loader-line { width: 0; height: 1px; background: var(--gold); margin-top: 1.5rem; animation: loaderLine 1.2s var(--transition-slow) 0.5s forwards; }
+  @keyframes loaderUp { to { transform: translateY(0); } }
+  @keyframes loaderLine { to { width: 120px; } }
+ 
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 1rem 3rem;
+    background: rgba(253,250,245,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-light);
+    display: flex; align-items: center; justify-content: space-between;
+    transition: padding 0.4s;
+  }
+  .nav-logo img { height: 32px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-secondary); text-decoration: none; position: relative; transition: color 0.3s;
+  }
+  .nav-links a.active { color: var(--earth); }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width 0.4s var(--transition-slow);
+  }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-icon {
+    color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: none; border: none; cursor: none;
+    transition: color 0.3s; display: flex; align-items: center; gap: 0.4rem;
+  }
+  .nav-icon:hover { color: var(--gold); }
+  .bag-count {
+    width: 18px; height: 18px; background: var(--terracotta);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: white; font-weight: 500;
+  }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 1px; background: var(--earth); transition: all 0.3s; }
+ 
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 990;
+    background: var(--deep-earth);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.5s var(--transition-slow), visibility 0.5s;
+  }
+  .mobile-menu.open { opacity: 1; visibility: visible; pointer-events: auto; }
+  .mobile-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+  .mobile-links a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 300;
+    color: rgba(253,250,245,0.7); text-decoration: none; transition: color 0.3s;
+  }
+  .mobile-links a:hover { color: var(--gold-light); }
+  .mobile-close {
+    position: absolute; top: 2rem; right: 2rem;
+    background: none; border: none; cursor: none;
+    font-size: 1.5rem; color: rgba(253,250,245,0.5); transition: color 0.3s, transform 0.3s;
+  }
+  .mobile-close:hover { color: var(--gold); transform: rotate(90deg); }
+ 
+  /* REVEAL ANIMATIONS */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.9s var(--transition-slow), transform 0.9s var(--transition-slow);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+ 
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp { to { transform: translateY(0); } }
+ 
+  /* PAGE HERO */
+  .page-hero {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: 'CONTACT';
+    position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11rem; font-weight: 300; line-height: 1;
+    color: rgba(44,33,24,0.04); pointer-events: none; white-space: nowrap;
+    letter-spacing: -0.04em;
+  }
+  .page-hero-label {
+    font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase;
+    font-weight: 400; color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+    opacity: 0; animation: fadeUp 0.8s var(--transition-slow) 1.6s forwards;
+  }
+  .page-hero-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+  .page-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300; line-height: 0.95; color: var(--deep-earth);
+    letter-spacing: -0.01em; overflow: hidden;
+  }
+  .page-hero-title span { display: block; transform: translateY(100%); animation: slideUp 1s var(--transition-slow) 1.7s forwards; }
+  .page-hero-title em { font-style: italic; }
+  .page-hero-sub {
+    font-size: 0.82rem; font-weight: 300; letter-spacing: 0.04em;
+    color: var(--text-secondary); margin-top: 1.2rem; max-width: 400px; line-height: 1.8;
+    opacity: 0; animation: fadeUp 0.8s var(--transition-slow) 2s forwards;
+  }
+ 
+  /* CONTACT SECTION */
+  .contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    min-height: 80vh;
+  }
+ 
+  /* LEFT — Info Panel */
+  .contact-info {
+    background: var(--deep-earth);
+    padding: 5rem 3.5rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .contact-info::before {
+    content: '';
+    position: absolute; bottom: -6rem; left: -6rem;
+    width: 28rem; height: 28rem;
+    border: 1px solid rgba(184,151,74,0.12);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .contact-info::after {
+    content: '';
+    position: absolute; bottom: -3rem; left: -3rem;
+    width: 18rem; height: 18rem;
+    border: 1px solid rgba(184,151,74,0.08);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .info-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 1.5rem;
+  }
+  .info-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300; color: var(--cream);
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .info-heading em { font-style: italic; color: var(--gold-light); }
+  .info-desc {
+    font-size: 0.82rem; font-weight: 300; color: rgba(249,245,238,0.55);
+    line-height: 1.85; margin-top: 1.5rem; max-width: 320px;
+  }
+ 
+  .contact-details { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+  .contact-detail-item {}
+  .detail-label {
+    font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.5rem;
+  }
+  .detail-value {
+    font-size: 0.9rem; font-weight: 300; color: rgba(249,245,238,0.8);
+    line-height: 1.6; letter-spacing: 0.02em;
+  }
+  .detail-value a {
+    color: rgba(249,245,238,0.8); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .detail-value a:hover { color: var(--gold-light); }
+ 
+  .contact-socials { display: flex; gap: 1rem; margin-top: 3rem; }
+  .contact-social {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(184,151,74,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(249,245,238,0.5); text-decoration: none;
+    transition: border-color 0.3s, color 0.3s, background 0.3s;
+  }
+  .contact-social:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(184,151,74,0.1);
+  }
+ 
+  .store-hours { margin-top: 2.5rem; }
+  .hours-title {
+    font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+  }
+  .hours-row {
+    display: flex; justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(184,151,74,0.08);
+    font-size: 0.75rem; font-weight: 300;
+    color: rgba(249,245,238,0.6); letter-spacing: 0.05em;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row span:last-child { color: rgba(184,151,74,0.8); }
+ 
+  /* RIGHT — Form Panel */
+  .contact-form-wrap {
+    background: var(--warm-white);
+    padding: 5rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .form-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .form-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 300; color: var(--deep-earth);
+    line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 0.8rem;
+  }
+  .form-title em { font-style: italic; }
+  .form-subtitle {
+    font-size: 0.8rem; font-weight: 300; color: var(--text-secondary);
+    line-height: 1.75; margin-bottom: 2.5rem;
+  }
+ 
+  .contact-form { display: flex; flex-direction: column; gap: 1.6rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-label {
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    font-weight: 500; color: var(--text-muted);
+  }
+  .form-input, .form-select, .form-textarea {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem; font-weight: 300; color: var(--earth);
+    background: transparent;
+    border: none; border-bottom: 1px solid var(--border);
+    padding: 0.7rem 0;
+    outline: none; width: 100%;
+    transition: border-color 0.3s;
+    letter-spacing: 0.03em;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-bottom-color: var(--gold);
+  }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); font-weight: 300; }
+  .form-textarea { resize: none; height: 100px; }
+  .form-select {
+    appearance: none; cursor: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23B8974A'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.3rem center;
+  }
+ 
+  .form-submit-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  .form-note {
+    font-size: 0.68rem; font-weight: 300; color: var(--text-muted);
+    letter-spacing: 0.04em; line-height: 1.6;
+  }
+  .submit-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+    font-weight: 500; color: var(--cream);
+    background: var(--deep-earth);
+    border: 1px solid var(--deep-earth);
+    padding: 1rem 2.4rem;
+    cursor: none;
+    transition: background 0.4s var(--transition-slow), color 0.4s, border-color 0.4s;
+    white-space: nowrap;
+    position: relative; overflow: hidden;
+  }
+  .submit-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.5s var(--transition-slow);
+    z-index: 0;
+  }
+  .submit-btn:hover::before { transform: translateX(0); }
+  .submit-btn span { position: relative; z-index: 1; }
+  .submit-btn:hover { border-color: var(--gold); }
+ 
+  /* MAP SECTION */
+  .map-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .map-section-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .map-embed {
+    height: 420px;
+    background: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .map-embed iframe {
+    width: 100%; height: 100%; border: none;
+    filter: sepia(0.25) contrast(0.9);
+  }
+  .map-info {
+    background: var(--earth);
+    padding: 4rem 3.5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .map-info-eyebrow {
+    font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 1.2rem;
+  }
+  .map-info-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 300;
+    color: var(--cream); line-height: 1.15; margin-bottom: 1.2rem;
+  }
+  .map-info-title em { font-style: italic; color: var(--gold-light); }
+  .map-address {
+    font-size: 0.8rem; font-weight: 300; color: rgba(249,245,238,0.6);
+    line-height: 1.9; letter-spacing: 0.03em; margin-bottom: 1.8rem;
+  }
+  .map-directions-btn {
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+    font-weight: 500; color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,151,74,0.3);
+    padding-bottom: 0.4rem;
+    transition: color 0.3s, border-color 0.3s; width: fit-content;
+  }
+  .map-directions-btn:hover { color: var(--gold-light); border-color: var(--gold-light); }
+  .map-directions-btn::after { content: '→'; transition: transform 0.3s; }
+  .map-directions-btn:hover::after { transform: translateX(4px); }
+ 
+  /* FAQ SECTION */
+  .faq-section {
+    padding: 6rem 3rem;
+    background: var(--cream);
+  }
+  .faq-header {
+    text-align: center; margin-bottom: 4rem;
+  }
+  .faq-eyebrow {
+    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400;
+    display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;
+  }
+  .faq-eyebrow::before, .faq-eyebrow::after { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .faq-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; color: var(--deep-earth);
+  }
+  .faq-title em { font-style: italic; }
+  .faq-grid {
+    max-width: 860px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .faq-question {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 0;
+    cursor: none;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.03em;
+    color: var(--earth);
+    transition: color 0.3s;
+    background: none; border: none; width: 100%; text-align: left;
+  }
+  .faq-question:hover { color: var(--gold); }
+  .faq-icon {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem; color: var(--text-muted);
+    transition: transform 0.4s var(--transition-slow), border-color 0.3s, color 0.3s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s var(--transition-slow), padding 0.3s;
+    font-size: 0.8rem; font-weight: 300; color: var(--text-secondary);
+    line-height: 1.85; letter-spacing: 0.03em;
+    padding: 0;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 200px; padding-bottom: 1.4rem;
+  }
+ 
+  /* NEWSLETTER STRIP */
+  .newsletter-strip {
+    background: var(--deep-earth);
+    padding: 5rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 3rem; flex-wrap: wrap;
+  }
+  .nl-left {}
+  .nl-eyebrow {
+    font-size: 0.58rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); font-weight: 400; margin-bottom: 0.8rem;
+  }
+  .nl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300;
+    color: var(--cream); line-height: 1.1;
+  }
+  .nl-title em { font-style: italic; color: var(--gold-light); }
+  .nl-form {
+    display: flex; gap: 0; flex: 1; max-width: 480px;
+  }
+  .nl-input {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem; font-weight: 300; letter-spacing: 0.04em;
+    color: var(--cream); background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1); border-right: none;
+    padding: 0.9rem 1.2rem; outline: none; flex: 1;
+    transition: border-color 0.3s;
+  }
+  .nl-input::placeholder { color: rgba(249,245,238,0.35); }
+  .nl-input:focus { border-color: var(--gold); }
+  .nl-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 500; color: var(--deep-earth);
+    background: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.9rem 1.6rem;
+    cursor: none; transition: background 0.3s, color 0.3s; white-space: nowrap;
+  }
+  .nl-btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
+ 
+  /* FOOTER */
+  footer { background: var(--deep-earth); color: var(--cream); }
+  .footer-top {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+    gap: 3rem; padding: 5rem 3rem 4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-brand img { height: 28px; opacity: 0.85; margin-bottom: 1.2rem; }
+  .footer-brand-desc {
+    font-size: 0.75rem; font-weight: 300; color: rgba(249,245,238,0.45);
+    line-height: 1.8; letter-spacing: 0.03em; max-width: 240px;
+  }
+  .footer-socials { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+  .footer-social {
+    width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: rgba(249,245,238,0.4); text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .footer-social:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col-title {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 500; color: rgba(249,245,238,0.5); margin-bottom: 1.5rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a {
+    font-size: 0.78rem; font-weight: 300; color: rgba(249,245,238,0.55);
+    text-decoration: none; letter-spacing: 0.04em; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-contact-item {
+    font-size: 0.75rem; font-weight: 300; color: rgba(249,245,238,0.55);
+    line-height: 1.6; margin-bottom: 1rem; letter-spacing: 0.03em;
+  }
+  .footer-contact-item strong {
+    display: block; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.3rem;
+  }
+  .footer-bottom {
+    padding: 1.5rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .footer-copy { font-size: 0.65rem; font-weight: 300; color: rgba(249,245,238,0.3); letter-spacing: 0.08em; }
+ 
+  /* WHATSAPP */
+  .whatsapp-btn {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+    width: 48px; height: 48px;
+    background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s var(--transition-slow);
+  }
+  .whatsapp-btn:hover { transform: scale(1.1); }
+  .whatsapp-btn svg { width: 22px; height: 22px; fill: white; }
+ 
+  /* SUCCESS MESSAGE */
+  .form-success {
+    display: none; text-align: center;
+    padding: 3rem;
+    background: rgba(92,107,78,0.05);
+    border: 1px solid rgba(92,107,78,0.2);
+  }
+  .form-success.show { display: block; }
+  .success-icon {
+    font-size: 2rem; margin-bottom: 1rem;
+  }
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; color: var(--deep-earth); margin-bottom: 0.5rem;
+  }
+  .success-msg { font-size: 0.8rem; font-weight: 300; color: var(--text-secondary); line-height: 1.7; }
+ 
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .page-hero { padding: 7rem 2rem 3rem; }
+    .contact-section { grid-template-columns: 1fr; }
+    .contact-info { padding: 3.5rem 2rem; }
+    .contact-form-wrap { padding: 3.5rem 2rem; }
+    .map-section-inner { grid-template-columns: 1fr; }
+    .map-embed { height: 300px; }
+    .map-info { padding: 3rem 2rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 2rem; }
+    .newsletter-strip { flex-direction: column; padding: 3.5rem 2rem; }
+    .nl-form { max-width: 100%; }
+    .faq-section { padding: 4rem 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-submit-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+ 
+  @media (max-width: 600px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+ 
+<div id="cursor" class="cursor"></div>
+<div id="cursorRing" class="cursor-ring"></div>
+ 
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo"><span>VAYOMEIE</span></div>
+  <div class="loader-line"></div>
+</div>
+ 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <ul class="mobile-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+ 
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://vayomeie.com/assets/img/logo/vayomeie_small_logo_HD.png" alt="Vayomeie">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="shop.html">Shop</a></li>
+    <li><a href="our-story.html">Our Story</a></li>
+    <li><a href="journal.html">Journal</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://wa.me/918523032783" class="nav-icon">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+      WhatsApp
+    </a>
+    <a href="shop.html" class="nav-icon">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Bag <span class="bag-count">0</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+ 
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-label">Get In Touch</div>
+  <h1 class="page-hero-title">
+    <span>Let's <em>Connect.</em></span>
+  </h1>
+  <p class="page-hero-sub">We'd love to hear from you — whether it's about a piece you fell in love with, a custom order, or simply to say hello.</p>
+</section>
+ 
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+ 
+  <!-- LEFT: Info -->
+  <div class="contact-info reveal">
+    <div>
+      <div class="info-eyebrow">Our Details</div>
+      <h2 class="info-heading">Always <em>here</em><br>for you.</h2>
+      <p class="info-desc">Whether you're searching for the perfect piece or need help with sizing, our team is ready to guide you with warmth and intention.</p>
+    </div>
+ 
+    <div class="contact-details">
+      <div class="contact-detail-item">
+        <div class="detail-label">Phone & WhatsApp</div>
+        <div class="detail-value"><a href="tel:+918523032783">+91 85230 32783</a></div>
+      </div>
+      <div class="contact-detail-item">
+        <div class="detail-label">Email</div>
+        <div class="detail-value"><a href="mailto:info@vayomeie.com">info@vayomeie.com</a></div>
+      </div>
+      <div class="contact-detail-item">
+        <div class="detail-label">Studio Address</div>
+        <div class="detail-value">VAYOMEIE Main Branch<br>Anand Nagar Colony, Khairatabad<br>Hyderabad, Telangana — 500004</div>
+      </div>
+    </div>
+ 
+    <div>
+      <div class="store-hours">
+        <div class="hours-title">Working Hours</div>
+        <div class="hours-row"><span>Monday – Friday</span><span>10:00 – 18:00</span></div>
+        <div class="hours-row"><span>Saturday</span><span>10:00 – 16:00</span></div>
+        <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+      </div>
+      <div class="contact-socials">
+        <a href="https://www.instagram.com/vayomeie" class="contact-social" aria-label="Instagram">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://wa.me/918523032783" class="contact-social" aria-label="WhatsApp">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- RIGHT: Form -->
+  <div class="contact-form-wrap reveal reveal-delay-1">
+    <div class="form-eyebrow">Send a Message</div>
+    <h2 class="form-title">We'd love to <em>hear</em><br>from you.</h2>
+    <p class="form-subtitle">Fill in the form and we'll respond within 24 hours. For urgent queries, WhatsApp is the fastest way to reach us.</p>
+ 
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="fname">First Name</label>
+          <input class="form-input" type="text" id="fname" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lname">Last Name</label>
+          <input class="form-input" type="text" id="lname" placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input class="form-input" type="email" id="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="phone">Phone / WhatsApp</label>
+        <input class="form-input" type="tel" id="phone" placeholder="+91 00000 00000">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="subject">Subject</label>
+        <select class="form-select" id="subject">
+          <option value="">Select a topic</option>
+          <option>Order Inquiry</option>
+          <option>Size & Fit Help</option>
+          <option>Custom / Bulk Order</option>
+          <option>Returns & Exchanges</option>
+          <option>Collaboration</option>
+          <option>General Question</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="message">Your Message</label>
+        <textarea class="form-textarea" id="message" placeholder="Tell us how we can help you…" required></textarea>
+      </div>
+      <div class="form-submit-row">
+        <p class="form-note">We respect your privacy. Your<br>details are never shared.</p>
+        <button type="submit" class="submit-btn"><span>Send Message →</span></button>
+      </div>
+    </form>
+ 
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✦</div>
+      <div class="success-title">Message <em>received.</em></div>
+      <p class="success-msg">Thank you for reaching out. We'll get back to you within 24 hours.<br>In the meantime, feel free to browse our collection.</p>
+    </div>
+  </div>
+ 
+</section>
+ 
+<!-- MAP SECTION -->
+<section class="map-section reveal">
+  <div class="map-section-inner">
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0!2d78.4538!3d17.4239!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb97c8ba7dbbfb%3A0x4a29bef5ada75b9c!2sKhairatabad%2C+Hyderabad%2C+Telangana!5e0!3m2!1sen!2sin!4v1"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Vayomeie Location">
+      </iframe>
+    </div>
+    <div class="map-info">
+      <div class="map-info-eyebrow">Find Us</div>
+      <h3 class="map-info-title">Visit our<br><em>Studio.</em></h3>
+      <p class="map-address">
+        VAYOMEIE Main Branch<br>
+        Anand Nagar Colony<br>
+        Khairatabad, Hyderabad<br>
+        Telangana — 500 004<br>
+        India
+      </p>
+      <a href="https://maps.google.com/?q=Khairatabad,Hyderabad,Telangana" target="_blank" class="map-directions-btn">Get Directions</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- FAQ SECTION -->
+<section class="faq-section">
+  <div class="faq-header reveal">
+    <div class="faq-eyebrow">Quick Answers</div>
+    <h2 class="faq-title">Frequently <em>asked</em> questions</h2>
+  </div>
+  <div class="faq-grid">
+ 
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        How long does delivery take?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">We ship across India within 5–7 business days. Express shipping is available at checkout. International shipping timelines vary by region — typically 10–15 business days.</div>
+    </div>
+ 
+    <div class="faq-item reveal reveal-delay-1">
+      <button class="faq-question">
+        Can I place a custom or bulk order?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Absolutely! We love creating custom pieces for special occasions and bulk orders for events or gifting. Please write to us at info@vayomeie.com or WhatsApp us directly, and we'll guide you through the process.</div>
+    </div>
+ 
+    <div class="faq-item reveal reveal-delay-2">
+      <button class="faq-question">
+        What is your return & exchange policy?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">We accept exchanges within 7 days of delivery for sizing issues. Items must be unworn, unwashed, and with all original tags. Please reach out to us before initiating a return so we can assist you personally.</div>
+    </div>
+ 
+    <div class="faq-item reveal">
+      <button class="faq-question">
+        Are the fabrics really eco-friendly?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Yes — wholeheartedly. All our fabrics are breathable, natural-fibre textiles dyed with eco-friendly colours by skilled artisans in Andhra Pradesh. We are committed to responsible fashion that honours both people and the planet.</div>
+    </div>
+ 
+    <div class="faq-item reveal reveal-delay-1">
+      <button class="faq-question">
+        How do I know my size?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Our size guide is available on every product page. If you're between sizes or need help, our team is happy to personally assist you over WhatsApp to ensure the perfect fit for your unique measurements.</div>
+    </div>
+ 
+    <div class="faq-item reveal reveal-delay-2">
+      <button class="faq-question">
+        Do you ship internationally?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Yes, we ship to select international destinations. Shipping costs and timelines are calculated at checkout based on your location. For countries not listed, please contact us and we'll do our best to accommodate you.</div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- NEWSLETTER STRIP -->
+<section class="newsletter-strip reveal">
+  <div class="nl-left">
+    <div class="nl-eyebrow">Stay Connected</div>
+    <h3 class="nl-title">Stories, Drops &<br><em>Inspirations.</em></h3>
+  </div>
+  <div class="nl-form">
+    <input type="email" class="nl-input" placeholder="Enter your email address…">
+    <button class="nl-btn">Subscribe</button>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://vayomeie.com/assets/img/logo/vayomeie_small_logo_HD.png" alt="Vayomeie">
+      <p class="footer-brand-desc">Conscious luxury for the modern minimalist. Eco-friendly ethnic wear crafted in Andhra Pradesh with eco-friendly colours and breathable fabrics.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/vayomeie" class="footer-social" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://wa.me/918523032783" class="footer-social" aria-label="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="shop.html">Shop All</a></li>
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="journal.html">Journal</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Customer Care</h4>
+      <ul class="footer-links">
+        <li><a href="https://vayomeie.com/size-guide">Size Guide</a></li>
+        <li><a href="https://vayomeie.com/fabric-guide">Fabric Guide</a></li>
+        <li><a href="https://vayomeie.com/shipping-policy">Shipping & Returns</a></li>
+        <li><a href="https://vayomeie.com/privacy-policy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Get In Touch</h4>
+      <div class="footer-contact-item"><strong>Phone</strong>+91 8523032783</div>
+      <div class="footer-contact-item"><strong>Email</strong>info@vayomeie.com</div>
+      <div class="footer-contact-item"><strong>Address</strong>VAYOMEIE Main Branch, Anand Nagar Colony, Khairatabad, Hyderabad, Telangana, 500004.</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Vayomeie. All rights reserved. Made with intention.</p>
+    <p class="footer-copy" style="color:var(--text-muted);opacity:0.5;">Crafted in Andhra Pradesh</p>
+  </div>
+</footer>
+ 
+<a href="https://wa.me/918523032783?text=Hi%21+I%27d+like+to+know+more+about+Vayomeie." class="whatsapp-btn" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.989.574 3.842 1.566 5.409L2 22l4.703-1.535A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 12 2z"/></svg>
+</a>
+ 
+<script>
+// LOADER
+window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hide'); }, 1800); });
+ 
+// CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+function animRing() { rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); }
+animRing();
+document.querySelectorAll('a, button, input, select, textarea').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+ 
+// MOBILE MENU
+document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+ 
+// REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+ 
+// FAQ ACCORDION
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const item = this.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+ 
+// FORM SUBMIT
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (!fname || !email) {
+    document.getElementById('fname').style.borderBottomColor = fname ? '' : 'var(--terracotta)';
+    document.getElementById('email').style.borderBottomColor = email ? '' : 'var(--terracotta)';
+    return;
+  }
+  this.style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+});
+ 
+// NEWSLETTER
+document.querySelector('.nl-btn').addEventListener('click', function() {
+  const input = this.previousElementSibling;
+  if (input.value.includes('@')) {
+    this.textContent = 'Subscribed ✓';
+    this.style.background = 'var(--sage)';
+    this.style.borderColor = 'var(--sage)';
+    input.value = '';
+    input.placeholder = 'You\'re on the list!';
+  }
+});
+</script>
+</body>
+</html>
